@@ -43,7 +43,7 @@ def racks(moneyselect):
     return playerscore
 
 
-def moneycheckerror():
+def checkerror():
     while True:
         try:
             userinput = input('Enter value: ')
@@ -57,7 +57,31 @@ def moneycheckerror():
     
     return userinput
 
+def run():
+    moneyrack = checkerror()
+    print(racks(moneyrack))
 
-print(f"Player 1's turn.")
-moneyrack = moneycheckerror()
-print(f"Score: {racks(moneyrack)}")
+def playagain():
+    user_response = input("\nDo you want to play again? Y or N: ")
+    while True:
+        if user_response.lower() == "n":
+            return False
+        elif user_response.lower() == "y":
+            return True
+        else:
+            user_response = input("Enter Y (yes) or N (No): ")
+            continue
+
+def main():
+    while True:
+        print(f"Player 1's turn.")
+        run()
+        print(f"Player 2's turn.")
+        run()
+        if not playagain():
+            break
+    
+    print("Thanks for playing.")       
+
+main()
+   
