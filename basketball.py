@@ -40,8 +40,6 @@ def racks(moneyselect):
             playerscore += results[0]
         print(f"Rack {i}: {results[1]}")
 
-    # print(f"player score: {playerscore}")
-
     return playerscore
 
 
