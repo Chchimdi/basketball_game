@@ -1,19 +1,20 @@
 import random
 
+
 def regularball(score_array):
     currentscore = 0
     for i in range(5):
         if i == 4:
             if random.randint(0,1) == 1:
                 currentscore += 2
-                score_array.append(2)
+                score_array.append("M")
             else:
-                score_array.append(0)
+                score_array.append("X")
         elif random.randint(0,1) == 1:
-            score_array.append(1)
+            score_array.append("O")
             currentscore += 1
         else:
-            score_array.append(0)
+            score_array.append("X")
     
     return currentscore, score_array
 
@@ -22,9 +23,10 @@ def moneyball(score_array):
     for i in range(5):
         if random.randint(0,1) == 1:
             currentscore += 2
-            score_array.append(2)
+            # addsymbol(2, score_array)
+            score_array.append("M")
         else:
-            score_array.append(0)
+            score_array.append("X")
 
     return currentscore, score_array
     
@@ -42,7 +44,6 @@ def racks(moneyselect):
 
     return playerscore
 
-
 def checkerror():
     while True:
         try:
@@ -59,7 +60,7 @@ def checkerror():
 
 def run():
     moneyrack = checkerror()
-    print(racks(moneyrack))
+    return racks(moneyrack)
 
 def playagain():
     user_response = input("\nDo you want to play again? Y or N: ")
@@ -73,13 +74,18 @@ def playagain():
             continue
 
 def main():
+    player1score = player2score = gamesplayed = 0
     while True:
         print(f"Player 1's turn.")
-        run()
-        print(f"Player 2's turn.")
-        run()
+        player1score += run()
+        print(f"\nPlayer 2's turn.")
+        player2score += run()
+        gamesplayed += 1
         if not playagain():
             break
+    print(f"Player1 score: {player1score}")
+    print(f"Player2 score: {player2score}")
+    print(f"Total potential points each: {34*gamesplayed}\n")
     
     print("Thanks for playing.")       
 
