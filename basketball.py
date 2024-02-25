@@ -23,7 +23,6 @@ def moneyball(score_array):
     for i in range(5):
         if random.randint(0,1) == 1:
             currentscore += 2
-            # addsymbol(2, score_array)
             score_array.append("M")
         else:
             score_array.append("X")
@@ -40,7 +39,8 @@ def racks(moneyselect):
         else:
             results = regularball(score_array)
             playerscore += results[0]
-        print(f"Rack {i}: {results[1]}")
+        print(f"Rack {i} Score: {results[0]} | {results[1]}")
+    print(f"Gsme Score: {playerscore}")
 
     return playerscore
 
